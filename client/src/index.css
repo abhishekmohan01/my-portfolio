@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Deep Space Dark Theme with Neon Accents */
+  --background: 240 10% 4%;     /* #09090b - Very dark almost black */
+  --foreground: 0 0% 98%;       /* #fafafa */
+  
+  --card: 240 10% 6%;           /* Slightly lighter dark */
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 4%;
+  --popover-foreground: 0 0% 98%;
+  
+  /* Electric Cyan Primary */
+  --primary: 190 100% 50%;      /* #00f3ff - Cyan Neon */
+  --primary-foreground: 240 10% 4%;
+  
+  /* Electric Purple Secondary */
+  --secondary: 270 100% 60%;    /* #bc13fe - Purple Neon */
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 65%;
+  
+  --accent: 240 5% 15%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 190 100% 50%;         /* Matching primary for focus rings */
+  
+  --radius: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-secondary;
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 20px hsla(var(--primary), 0.5);
+  }
+  
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+html {
+  scroll-behavior: smooth;
+}
